@@ -1,11 +1,12 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 
-type Event = {
-  name: string;
+export type Event = {
+  id: string;
+  title: string;
   date: Date;
   allDay: boolean;
-  startTime: string;
-  endTime: string;
+  startTime?: string | null;
+  endTime?: string | null;
   color: string;
 };
 

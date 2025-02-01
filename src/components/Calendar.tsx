@@ -1,3 +1,13 @@
+import { useCurrentDateContext } from "../contexts/TodayContext";
+
+import { CalendarGrid } from "./CalendarGrid";
+
 export function Calendar() {
-  return <>Hi</>;
+  const { currentDate } = useCurrentDateContext();
+
+  return (
+    <>
+      <CalendarGrid current={currentDate} />
+    </>
+  );
 }
