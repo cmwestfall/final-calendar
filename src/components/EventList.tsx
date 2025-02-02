@@ -1,16 +1,14 @@
 import { format } from "date-fns";
-import { useEventContext } from "../contexts/EventContext";
+import { useFilteredEvents } from "../hooks/useFilteredEvent";
+import { Event } from "../contexts/EventContext";
 
 type EventListProps = {
   date: Date;
+  onEventClick: (event: Event) => void;
 };
 
-export function EventList({ date }: EventListProps) {
-  const { events } = useEventContext();
-
-  const dayEvents = events.filter(
-    (event) => format(event.date, "yyyy-MM-dd") === format(date, "yyyy-MM-dd")
-  );
+export function EventList({ date, onEventClick }: EventListProps) {
+  const dayEvents = useFilteredEvents(date);
 
   const allDayEvents = dayEvents.filter((event) => event.allDay);
 
@@ -35,13 +33,19 @@ export function EventList({ date }: EventListProps) {
           key={event.id}
           className="event all-day-event"
           style={{ backgroundColor: event.color }}
+          onClick={() => onEventClick(event)}
         >
           {event.title}
         </div>
       ))}
       <ul>
         {sortedTimedEvents.map((event) => (
-          <li style={{ color: event.color }} key={event.id} className="event">
+          <li
+            style={{ color: event.color }}
+            key={event.id}
+            className="event"
+            onClick={() => onEventClick(event)}
+          >
             <div className="event-time-title">
               <span className="event-time">
                 {event.startTime

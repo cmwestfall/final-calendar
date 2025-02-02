@@ -190,13 +190,44 @@ li::before {
   margin: 0 0.5rem 0 0;
 }
 
-.save-event-btn {
+.save-event-btn,
+.edit-event-btn {
   border-color: hsl(150, 80%, 30%);
   background-color: hsl(150, 80%, 95%);
   color: hsl(150, 80%, 10%);
   height: 20px;
 }
 
-.save-event-btn:hover {
+.save-event-btn:hover,
+.edit-event-btn:hover {
   background-color: hsl(150, 80%, 90%);
+}
+
+.view-more-btn {
+  width: 100%;
+  background-color: white;
+}
+
+.edit-delete-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.edit-event-btn {
+  width: 48%;
+  height: 2rem;
+  border-radius: 0;
+}
+
+.delete-event-btn {
+  width: 48%;
+  height: 2rem;
+  border-radius: 0;
+  border-color: hsl(0, 75%, 60%);
+  background-color: hsl(0, 75%, 95%);
+  color: hsl(0, 75%, 10%);
+}
+
+.delete-event-btn:hover {
+  background-color: hsl(0, 75%, 90%);
 }
